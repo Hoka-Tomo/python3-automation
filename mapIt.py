@@ -14,7 +14,8 @@ if len(sys.argv) > 1:
     address = ''.join(sys.argv[1:])
 else:
     # クリップボードから住所を取得する
-    # test
     address = pyperclip.paste()
+# クリップボードに取得した文字が日本語の場合の文字化けを防ぐ
+# 事前にインポートしたurllibを使って対応
 address_quote = urllib.parse.quote(address)
 webbrowser.open('https://www.google.com/maps/place/' + address_quote)
